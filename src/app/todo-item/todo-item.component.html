@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <ng-container *ngIf="todos.length; else noTask">
+        <ul>
+            <li *ngFor="let item of todos">
+                <h2>{{item.label}}</h2>
+                <p>{{item.date | tododate}}</p>
+                <button class="b_remove" (click)="onRemove(item)">Usuń</button>
+                <button class="b_done" (click)="onDone(item)">Zrobione</button>
+            </li>
+        </ul>
+    </ng-container>
+    <ng-template #noTask>
+        <p>Brak zadań!</p>
+    </ng-template>
+</div>

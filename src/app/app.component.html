@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <p>To-do list</p>
+  <div class="operations">
+    <input type="text" #in placeholder="Dodaj zadanie..." (keyup.enter)="onAdd($event.target.value)">
+    <button class="b_add" (click)="onAdd(in.value)">Dodaj</button>
+    <button class="b_clear" (click)="onClear()">Wyczyść</button>
+  </div>
+  
+  <div class="items">
+      <app-todo-item [todos]="todos" (emitRemove)="onRemove($event)" (emitDone)="onDone($event)"></app-todo-item>
+  </div>
+  
+  <div class="completed">
+    <p>Wykonane zadania: {{done.length}} z {{todos.length + done.length}}</p>
+    <ul>
+      <li *ngFor="let item of done">
+        <h2>{{item.label}}</h2>
+        <p>{{item.date | tododate}}</p>
+        <p>Wykonane!</p>
+      </li>
+    </ul>
+  </div>
+</div>
